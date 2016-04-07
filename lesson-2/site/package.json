@@ -1,0 +1,16 @@
+{
+  "name": "sng-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "meadowlark.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "express3-handlebars": "^0.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
