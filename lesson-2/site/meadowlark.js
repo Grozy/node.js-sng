@@ -4,11 +4,22 @@ app.set('port', process.env.PORT || 3000);
 
 // 设置静态文件
 app.use(express.static(__dirname + '/public'));
+app.use(require('body-parser')());
 
 // 设置handlebars视图引擎
 var handlebars = require('express3-handlebars').create( {
-	default: 'main'
+	default: 'main',
+	helpers: {
+		section: function(name, options){
+			if (!this._sections) { //如果_sections为空便初始化
+				this._sections = {}
+			}
+			this._sections[name] = options.fn(this);
+			return null;
+		}
+	}
 });
+
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
@@ -49,10 +60,36 @@ app.get('/headers', function(req, res){
 	res.send(s);
 });
 
-// api 
+// api
 var tours = require('./lib/tours.js')
 app.get('/api/tours', function(req, res){
 	res.json(tours.getAllTours());
+});
+
+app.get('/form', function(req, res){
+	res.render('form');
+});
+
+app.post('/process', function(req, res){
+	if (req.xhr || req.accepts('json,html') === 'json') {
+		res.send({ success: true});
+	} else {
+			console.log('--------------------------------');
+			console.log('Form (from querystring)：' + req.query.form);
+			console.log('CSRF token (from hidden form field)：' + req.body._csrf);
+			console.log('Name (from visible form field)：' + req.body.name);
+			console.log('Email (from visible form field)：' + req.body.email);
+			console.log('--------------------------------');
+			res.redirect(303, '/thank-you');//请求成功之后，处理数据，并重定向到thank-you页面
+	}
+});
+
+app.get('/newsletter', function(req, res){
+	res.render('newsletter', {csrf: 'CSRF token gose here'});
+});
+
+app.get('/thank-you', function(req, res){
+	res.render('thank-you');
 });
 
 //定制404页面
