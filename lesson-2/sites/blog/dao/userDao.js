@@ -2,13 +2,7 @@ var mysql = require('mysql');
 var $conf = require('../conf/db_conf');
 var sql = require('./userSqlMapping');
 
-var pool = mysql.createPool({
-  host: '127.0.0.1',
-  user: 'root',
-  database: 'pet_site',
-  password: '123456',
-  queueLimit: 8
-});
+var pool = mysql.createPool($conf.mysql);
 
 var jsonWrite = function(res, ret) {
   if (typeof ret === 'undefined') {
