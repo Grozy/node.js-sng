@@ -5,7 +5,7 @@ var sql = require('./userSqlMapping');
 var pool = mysql.createPool({
   host: '127.0.0.1',
   user: 'root',
-  database: 'pet',
+  database: 'pet_site',
   password: '123456',
   queueLimit: 8
 });
@@ -26,7 +26,7 @@ module.exports = {
   add: function(req, res, next) {
     pool.getConnection(function(err, connection) {
       var param = req.query || req.param;
-      connection.query($sql.insert, [param.name, param.age], function(err, result){
+      connection.query(sql.insert, [param.name, param.age], function(err, result){
         if (result) {
           result = {
             code: 200,
