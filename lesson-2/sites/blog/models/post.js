@@ -37,14 +37,15 @@ Post.prototype.save = function(callback) {
   console.log('the post ' + post +' will insert table');
 
   pool.getConnection(function(err, connection) {
-    console.log('open post table err:' + err);
     if (err) {
+      console.log('open post table err:' + err);
       return callback(err);
     }
     // 'INSERT INTO post(id, user_id, title, content, time_stamp) VALUE(0,?,?,?,?)'
     connection.query(sql.insert, [post.user_id, post.title, post.post, time.minute], function(err, result) {
       console.log('log insert post err:' + err);
       if (result) {
+        console.log(result);
         callback(null, result);
       }
       connection.release();
@@ -52,6 +53,25 @@ Post.prototype.save = function(callback) {
   });
 };
 
-Post.prototype.get = function (id, callback) {
-
+Post.get = function (id, callback) {
+  pool.getConnection(function(err, connection) {
+    if (err) {
+      console.log('open post table err:' + err);
+      return callback(err);
+    }
+    var query = {};
+    if (id) {
+      query.id = id;
+      console.log(id);
+    }
+    console.log(sql.queryByUserId + id);
+    connection.query(sql.queryByUserId, [id], function(err, result) {
+      if (err) {
+        console.log('open post table err:' + err);
+        return callback(err);//失败返回err
+      }
+      callback(null, result);//成功，以数组形式返回
+      connection.release();
+    });
+  });
 };

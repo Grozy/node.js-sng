@@ -3,13 +3,29 @@ var router = express.Router();
 var crypto = require('crypto');
 var User = require('../models/user');
 var Post = require('../models/post');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', {
-    title: '主页',
-    user: req.session.user,
-    success: req.flash('success').toString(),
-    error: req.flash('error').toString()
+  var currentUser = req.session.user;
+  user_id = null;
+  if (currentUser) {
+    user_id = currentUser.id;
+  }
+  Post.get(user_id, function(err, posts){
+    if (err) {
+      posts = [];
+    }
+    for(i in posts[0]) {
+      console.log(i);
+    }
+    console.log('log posts : ' + posts[0]);
+    res.render('index', {
+      title: '主页',
+      user: req.session.user,
+      posts: posts,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
   });
 });
 
