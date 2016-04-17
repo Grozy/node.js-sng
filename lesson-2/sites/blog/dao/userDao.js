@@ -13,7 +13,6 @@ var jsonWrite = function(res, ret) {
   } else {
     res.json(ret);
   }
-
 }
 
 module.exports = {
