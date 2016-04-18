@@ -8,8 +8,8 @@
       div.innerHTML = '<img id=imghead>';
       var img = document.getElementById('imghead');
       img.onload = function() {
-        img.width = MAXWIDTH;
-        img.height = MAXHEIGHT;
+        img.width = img.offsetWidth;
+        img.height = img.offsetHeight;
       }
       var reader = new FileReader();
       reader.onload = function(evt) {

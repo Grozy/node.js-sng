@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
+var multer = require('multer');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -16,7 +17,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //  flash
 app.use(flash());
-
+app.use(multer({
+  dest: './tmp/images',
+  rename: function(fieldname. filename) {
+    return filename;
+  }
+}));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
