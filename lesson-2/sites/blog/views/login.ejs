@@ -1,7 +1,14 @@
 <%- include partials/header %>
-<form method="post">
-  用户名:<input type="text" name="name" value=""/><br/>
-  密码:<input type="password" name="password" value=""/><br/>
-  <input type="submit" name="login" value="登录"/>
+<form role="form" method="post">
+  <div class="form-group">
+    <label for="name">用户名:</label>
+    <input type="text" class="form-control" name="name" placeholder="请输入用户名">
+  </div>
+  <div class="form-group">
+      <label for="name">密码:</label>
+      <input type="password" class="form-control" name="password"
+          placeholder="请输入密码">
+   </div>
+   <button type="submit" class="btn btn-default" name="login">登陆</button>
 </form>
 <%- include partials/footer %>
