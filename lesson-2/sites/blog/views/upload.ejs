@@ -8,8 +8,9 @@
       div.innerHTML = '<img id=imghead>';
       var img = document.getElementById('imghead');
       img.onload = function() {
-        img.width = img.offsetWidth;
-        img.height = img.offsetHeight;
+        var rect = getImageRect(img, MAXWIDTH, MAXHEIGHT);
+        img.width = rect.width;
+        img.height = rect.height;
       }
       var reader = new FileReader();
       reader.onload = function(evt) {
@@ -18,11 +19,31 @@
       reader.readAsDataURL(file.files[0]);
     }
   }
+  function getImageRect(image, width, height) {
+    var rect = {
+      x: 0,
+      y: 0,
+    };
+    if (image.offsetWidth > image.offsetHeight) {
+      rect.width = width;
+      rect.height = image.offsetHeight * width / image.offsetWidth;
+    }
+    else if (image.offsetHeight > image.offsetWidth) {
+      rect.height = height;
+      rect.width = image.offsetWidth * height / image.offsetHeight;
+    }
+    else {
+      rect.width = image.width;
+      rect.height = image.height;
+    }
+    return rect;
+  }
 </script>
 <div id="preview">
   <img id="imghead">
 </div>
-<form class="" action="/upload" method="post" enctype="multipart/form-data">
+<form action="/upload" method="post" enctype="multipart/form-data">
   <input type="file" name="file" onchange="previewImage(this)">
+  <button type="submit" class="btn btn-default">发表</button>
 </form>
 <%-include partials/footer %>

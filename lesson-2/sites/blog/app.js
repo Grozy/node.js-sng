@@ -18,8 +18,8 @@ app.set('view engine', 'ejs');
 //  flash
 app.use(flash());
 app.use(multer({
-  dest: './tmp/images',
-  rename: function(fieldname. filename) {
+  dest: './public/tmp/images',
+  rename: function(fieldname, filename) {
     return filename;
   }
 }));
