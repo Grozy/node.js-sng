@@ -2,6 +2,7 @@ var mysql = require('mysql');
 var $conf = require('../conf/db_conf');
 var sql = require('../dao/postSqlMapping');
 
+var markdown = require('markdown').markdown;
 var pool = mysql.createPool($conf.mysql);
 
 function Post(user_id, title, post) {
@@ -62,7 +63,6 @@ Post.get = function (id, callback) {
     var query = {};
     if (id) {
       query.id = id;
-      console.log(id);
     }
     console.log(sql.queryByUserId + id);
     connection.query(sql.queryByUserId, [id], function(err, result) {
@@ -70,6 +70,9 @@ Post.get = function (id, callback) {
         console.log('open post table err:' + err);
         return callback(err);//失败返回err
       }
+      result.forEach(function(post){
+        post.post = markdown.toHTML(post.post)
+      });
       callback(null, result);//成功，以数组形式返回
       connection.release();
     });
