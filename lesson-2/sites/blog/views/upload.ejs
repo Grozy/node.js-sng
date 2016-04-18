@@ -1,0 +1,28 @@
+<%-include partials/header %>
+<script type="text/javascript">
+  function previewImage(file) {
+    var MAXWIDTH = 260,
+    MAXHEIGHT = 180,
+    div = document.getElementById('preview');
+    if (file.files && file.files[0]) {
+      div.innerHTML = '<img id=imghead>';
+      var img = document.getElementById('imghead');
+      img.onload = function() {
+        img.width = MAXWIDTH;
+        img.height = MAXHEIGHT;
+      }
+      var reader = new FileReader();
+      reader.onload = function(evt) {
+        img.src = evt.target.result;
+      }
+      reader.readAsDataURL(file.files[0]);
+    }
+  }
+</script>
+<div id="preview">
+  <img id="imghead">
+</div>
+<form class="" action="/upload" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" onchange="previewImage(this)">
+</form>
+<%-include partials/footer %>

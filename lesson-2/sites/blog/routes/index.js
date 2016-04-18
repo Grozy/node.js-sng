@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('login', checkNotLogin);
+router.get('/login', checkNotLogin);
 router.get('/login', function(req, res, next) {
   res.render('login', {
     title: '登录',
@@ -61,6 +61,33 @@ router.get('/reg', checkNotLogin);
 router.get('/reg', function(req, res, next) {
   res.render('reg', {
     title: '注册',
+    user: req.session.user,
+    success: req.flash('success').toString(),
+    error: req.flash('error').toString()
+  });
+});
+
+router.get('/logout', checkLogin);
+router.get('/logout', function(req, res) {
+  req.session.user = null;
+  req.flash('success', '登出成功！');
+  res.redirect('/');//登出成功后跳转到主页
+});
+
+router.get('/upload', checkLogin);
+router.get('/upload', function(req, res) {
+  res.render('upload', {
+    title: '文件上传',
+    user: req.session.user,
+    success: req.flash('success').toString(),
+    error: req.flash('error').toString()
+  });
+});
+
+router.get('/post', checkLogin);
+router.get('/post', function(req, res) {
+  res.render('post', {
+    title: '发表',
     user: req.session.user,
     success: req.flash('success').toString(),
     error: req.flash('error').toString()
@@ -107,23 +134,6 @@ router.post('/reg', function(req, res) {
   });
 });
 
-router.get('/logout', checkLogin);
-router.get('/logout', function(req, res) {
-  req.session.user = null;
-  req.flash('success', '登出成功！');
-  res.redirect('/');//登出成功后跳转到主页
-});
-
-router.get('/post', checkLogin);
-router.get('/post', function(req, res) {
-  res.render('post', {
-    title: '发表',
-    user: req.session.user,
-    success: req.flash('success').toString(),
-    error: req.flash('error').toString()
-  });
-});
-
 router.post('/post', checkLogin);
 router.post('/post', function(req, res) {
   var currentUser = req.session.user,
@@ -155,29 +165,5 @@ function checkNotLogin(req, res, next) {
   }
   next();
 }
-//
-// router.get('/awesome', function(req, res) {
-//   if (req.session.lastPage) {
-//     console.log('Last page was:' + req.session.lastPage + ".");
-//   }
-//   req.session.lastPage = '/awesome';//每一次访问时，session对象的lastPage会自动保存或更新内存中的session中去。
-//   res.send("You're Awesome. And the session expired time is: " + req.session.cookie.maxAge);
-// });
-//
-// router.get('/radical', function(req, res) {
-//   if (req.session.lastPage) {
-//     console.log('Last page was: ' + req.session.lastPage + '.');
-//   }
-//   req.session.lastPage = '/radical';
-//   res.send('What a radical visit! And the session expired time is: ' + req.session.cookie.maxAge);
-// });
-//
-// router.get('/tubular', function(req, res) {
-//   if (req.session.lastPage) {
-//     console.log("Last page was: " + req.session.lastPage + ".");
-//   }
-//   req.session.lastPage = '/tubular';
-//   res.send('Are you a suffer? And the session exprited time is ' + req.session.cookie.maxAge)
-// });
 
 module.exports = router;
