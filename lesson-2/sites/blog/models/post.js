@@ -78,3 +78,21 @@ Post.get = function (id, callback) {
     });
   });
 };
+
+Post.getOne = function(topic_id, user_id, callback) {
+  pool.getConnection(function(err, connection) {
+    if (err) {
+      console.log('open post table err:' + err);
+      return callback(err);
+    }
+    console.log('query queryByTopicIdBelongToUserId');
+    connection.query(sql.queryByTopicIdBelongToUserId, [user_id, topic_id], function(err, result) {
+      if (err) {
+        return callback(err);
+      }
+      console.log(result);
+      callback(null, result);
+      connection.release();
+    });
+  });
+}

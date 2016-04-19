@@ -9,6 +9,7 @@ var multer = require('multer');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var topics = require('./routes/topic');
 var app = express();
 
 var $settings = require('./conf/settings')
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/topic', topics)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

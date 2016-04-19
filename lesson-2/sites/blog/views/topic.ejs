@@ -1,0 +1,12 @@
+<%-include partials/header %>
+<p>
+  <h2><a href="#"><%= topic.title %></a></h2>
+</p>
+<p class="info">
+  作者：<a href="#"><%=topic.name%></a> |
+  日期：<%= topic.time_stamp %>
+</p>
+<p>
+  <%- topic.post %>
+</p>
+<%-include partials/footer %>
