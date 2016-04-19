@@ -54,18 +54,13 @@ Post.prototype.save = function(callback) {
   });
 };
 
-Post.get = function (id, callback) {
+Post.getAll = function (callback) {
   pool.getConnection(function(err, connection) {
     if (err) {
       console.log('open post table err:' + err);
       return callback(err);
     }
-    var query = {};
-    if (id) {
-      query.id = id;
-    }
-    console.log(sql.queryByUserId + id);
-    connection.query(sql.queryByUserId, [id], function(err, result) {
+    connection.query(sql.queryAll, [], function(err, result) {
       if (err) {
         console.log('open post table err:' + err);
         return callback(err);//失败返回err
@@ -90,7 +85,9 @@ Post.getOne = function(topic_id, user_id, callback) {
       if (err) {
         return callback(err);
       }
-      console.log(result);
+      result.forEach(function(post){
+        post.post = markdown.toHTML(post.post)
+      });
       callback(null, result);
       connection.release();
     });

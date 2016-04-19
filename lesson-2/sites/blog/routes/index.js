@@ -7,16 +7,9 @@ var Post = require('../models/post');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var currentUser = req.session.user;
-  user_id = null;
-  if (currentUser) {
-    user_id = currentUser.id;
-  }
-  Post.get(user_id, function(err, posts){
+  Post.getAll(function(err, posts){
     if (err) {
       posts = [];
-    }
-    for(i in posts[0]) {
-      console.log(i);
     }
     console.log('log posts : ' + posts[0]);
     res.render('index', {
@@ -49,7 +42,6 @@ router.post('/login', function(req, res) {
       req.flash('error', '用户不存在!');
       return res.redirect('/login');//用户不存在则跳转到登录页
     }
-    console.log(user[0]);
     var logined_user = user[0];
     req.session.user = logined_user;
     req.flash('success', '登陆成功！');
@@ -121,13 +113,12 @@ router.post('/reg', function(req, res) {
       // req.flash('error','用户已存在!');
       return res.redirect('/reg');//返回注册页
     }
-    console.log('excuse save ' + user);
-    newUser.save(function(err, user) {
+    newUser.save(function(err, users) {
       if (err) {
         // req.flash('error', err);
         return res.redirect('/reg');
       }
-      req.session.user = user;//将用户信息存入session
+      req.session.user = users[0];//将用户信息存入session
       req.flash('success', '注册成功!');
       res.redirect('/'); //注册成功后返回主页
     });
@@ -138,8 +129,6 @@ router.post('/post', checkLogin);
 router.post('/post', function(req, res) {
   var currentUser = req.session.user,
   post = new Post(currentUser.id, req.body.title, req.body.post);
-  console.log('post ' + req.body.post);
-  console.log('user ' + currentUser.user_id + '- post' + post);
   post.save(function(err) {
     if (err) {
       req.flash('error', err);

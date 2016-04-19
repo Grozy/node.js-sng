@@ -18,14 +18,16 @@ User.prototype.save = function (callback) {
     password: this.password,
     email: this.email
   };
-  console.log('do something '+ user);
   pool.getConnection(function(err, connection) {
     if (err) {
       return callback(err);
     }
     connection.query(sql.insert, [user.name, user.password, user.email], function(err, result){
       if (result) {
-        callback(null, user);
+
+        User.get(user.name, function(err, result) {
+          callback(null, result);
+        });
       }
       connection.release();
     });
