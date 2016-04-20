@@ -35,16 +35,12 @@ Post.prototype.save = function(callback) {
     title: this.title,
     post: this.post,
   };
-  console.log('the post ' + post +' will insert table');
-
   pool.getConnection(function(err, connection) {
     if (err) {
-      console.log('open post table err:' + err);
       return callback(err);
     }
     // 'INSERT INTO post(id, user_id, title, content, time_stamp) VALUE(0,?,?,?,?)'
     connection.query(sql.insert, [post.user_id, post.title, post.post, time.minute], function(err, result) {
-      console.log('log insert post err:' + err);
       if (result) {
         console.log(result);
         callback(null, result);
