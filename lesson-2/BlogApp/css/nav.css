@@ -1,0 +1,23 @@
+#header ul {
+	margin: 0px 0px;
+	width: 200px;
+}
+
+li {
+	display: inline-block;
+}
+
+#logo {
+	font-size: 30px;
+	width: 120px;
+	margin-right: auto;
+	margin-left: 0px;
+}
+
+#header {
+	display: inline-block;
+	width: 100%;
+	background: #444;
+	line-height: 60px;
+	color: white;
+}
