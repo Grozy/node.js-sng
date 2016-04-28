@@ -39,3 +39,26 @@ console.log(a1.__proto__.kind);
 console.log(Human.prototype);
 console.log(Human.prototype.__proto__);
 console.log(Object.prototype);
+console.log('!!!------------------------------------!!!');
+/*
+function Person(nick, age) {
+  this.nick = nick;
+  this.age = age;
+  this.sayName = function() {
+    console.log(this.nick);
+  }
+}
+*/
+function Person(nick, age) {
+  this.nick = nick;
+  this.age = age;
+}
+
+Person.prototype.sayName = function() {
+  console.log(this.nick);
+};
+
+var p2 = new Person();
+var p3 = new Person('Bryan', 45);
+p2.sayName();
+p3.sayName();
