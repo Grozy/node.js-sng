@@ -1,9 +1,19 @@
 <%-include partials/header %>
 <form method="post">
-用户名: <input type="text" name="name" value=""/><br/>
-密码: <input type="password" name="password" value=""><br/>
-确认密码: <input type="password" name="password-repeat" value=""><br/>
-邮箱: <input type="email" name="email" value=""><br/>
-<input type="submit" name="reg-action" value="注册">
+<div class="form-group">
+  <label for="name">用户名:</label>
+  <input type="text" class="form-control" name="name" placeholder="请输入用户名">
+</div>
+<div class="form-group">
+  <label for="name">密码</label>
+  <input type="password" class="form-control" name="password" placeholder="请输入密码">
+  <label for="name">确认密码</label>
+  <input type="password" class="form-control" name="password-repeat" placeholder="请重新输入确认密码">
+  <label for="name">邮箱:</label>
+  <input type="email" class="form-control" name="email" placeholder="请输入文章标题">
+</div>
+<div>
+  <button type="submit" class="btn btn-default">注册</button>
+</div>
 </form>
 <%-include partials/footer %>
