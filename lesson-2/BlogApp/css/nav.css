@@ -1,6 +1,8 @@
 .logo-css {
 	color: #005f3c;
 	font-size: 30px;
+	margin-left: 0px;
+	padding-left: 0px;
 }
 
 ul.nav.navbar-nav li a {
@@ -29,12 +31,33 @@ div.category {
 	clear: both;
 }
 
+div.category ul {
+	padding: 0px 0px;
+}
+
+div.category ul li {
+	display: inline-block;
+	font-size: 15px;
+	line-height: 35px;
+	padding: 0px 20px
+}
+
+div.category ul li a {
+	color: white;
+}
+
+#category-content {
+	width: 970px;
+	margin: 0px auto;
+	height: 35px;
+}
+
 #main {
 	width: 970px;
 	margin: 0px auto 0px;
 }
 
-/*#header {
+#header {
 	width: 970px;
 	margin: 0px auto;
-}*/
+}
