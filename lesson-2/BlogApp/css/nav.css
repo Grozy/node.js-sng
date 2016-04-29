@@ -19,6 +19,7 @@ li.active a {
 
 .background {
 	background: white;
+	margin-bottom: 0px
 }
 
 div.category {
@@ -27,3 +28,13 @@ div.category {
 	background: #005f3c;
 	clear: both;
 }
+
+#main {
+	width: 970px;
+	margin: 0px auto 0px;
+}
+
+/*#header {
+	width: 970px;
+	margin: 0px auto;
+}*/
