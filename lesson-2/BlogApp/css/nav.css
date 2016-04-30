@@ -46,28 +46,57 @@ div.category ul li a {
 	color: white;
 }
 
-#category-content {
-	width: 970px;
-	margin: 0px auto;
-	height: 35px;
-}
-
-#main {
-	width: 970px;
-	margin: 0px auto 0px;
-}
-
-#content {
-	padding: 0px 30px 0px;
-}
-
-#header {
-	width: 970px;
-	margin: 0px auto;
-}
 
 .border {
 	border: black 1px solid;
 	border-color: black;
 	border-width: 2px;
+}
+
+@media screen and (min-width: 970px) and (max-width: 2000px) {
+    #header {
+		width: 970px;
+		margin: 0px auto;
+	}
+	#main {
+		margin: 0px auto 0px;
+		width: 970px;
+	}
+	#category-content {
+		width: 970px;
+		margin: 0px auto;
+		height: 35px;
+	}
+	
+	#content {
+		padding: 0px 30px 0px;
+	}
+	
+    #secondary { width:30%; margin-left:3%;} 
+}
+
+@media screen and (min-width: 0px) and (max-width: 970px) {
+    #header {
+		width: 100%;
+		margin: 0px auto;
+	}
+	#category-content {
+		width: 100%;
+		margin: 0px auto;
+		height: 35px;
+	}
+	
+	#content {
+		padding: 0px 30px 0px;
+	}
+	
+	.row {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	
+	#main {
+		margin: 0px auto 0px;
+		width: 100%;
+	}
 }
