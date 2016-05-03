@@ -1,3 +1,10 @@
+html, body{ margin:0; height:100%; }
+
+.warp {
+	height: 100%;
+	position: relative;
+}
+
 .logo-css {
 	color: #005f3c;
 	font-size: 30px;
@@ -13,7 +20,7 @@ ul.nav.navbar-nav li a {
 	color: #005f3c;
 }
 
-li.active a {
+.category-content li.active a {
 	width: auto;	
 	margin-left: 20px;
 	margin-right: 20px;
@@ -53,6 +60,24 @@ div.category ul li a {
 	border-width: 2px;
 }
 
+#sidebar {
+	margin: 20px 0px 20px;
+}
+
+#footer{
+	position: absolute;
+	bottom: 0;
+	padding: 10px 0;
+	width: 100%;
+	background-color: #005f3c;
+	color: white;
+	height: 60px;
+}
+
+.page-component {
+	
+}
+
 @media screen and (min-width: 970px) and (max-width: 2000px) {
     #header {
 		width: 970px;
@@ -61,6 +86,7 @@ div.category ul li a {
 	#main {
 		margin: 0px auto 0px;
 		width: 970px;
+		/*min-height: 100%;*/
 	}
 	#category-content {
 		width: 970px;
@@ -70,6 +96,7 @@ div.category ul li a {
 	
 	#content {
 		padding: 0px 30px 0px;
+		min-height:100%; /*使内容高度和body一样*/
 	}
 	
     #secondary { width:30%; margin-left:3%;} 
@@ -84,6 +111,8 @@ div.category ul li a {
 		width: 100%;
 		margin: 0px auto;
 		height: 35px;
+		min-height:100%; /*使内容高度和body一样*/
+		margin-bottom:-80px;/*向上缩减80像素，不至于footer超出屏幕可视范围*/
 	}
 	
 	#content {
@@ -96,6 +125,7 @@ div.category ul li a {
 	}
 	
 	#main {
+		/*min-height: 100%;*/
 		margin: 0px auto 0px;
 		width: 100%;
 	}
