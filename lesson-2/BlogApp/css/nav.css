@@ -1,9 +1,13 @@
 html, body{ margin:0; height:100%; }
 
 .warp {
-	height: 100%;
+	/*height: 100%;*/
 	position: relative;
+	height: auto;
+	min-height: 100%;
 }
+
+/*body > #wrap {height: auto; min-height: 100%;}*/
 
 .logo-css {
 	color: #005f3c;
@@ -65,14 +69,25 @@ div.category ul li a {
 }
 
 #footer{
-	position: absolute;
-	bottom: 0;
-	padding: 10px 0;
+	position: relative;
+	margin-top: -50px;
+	height: 50px;
 	width: 100%;
 	background-color: #005f3c;
 	color: white;
-	height: 60px;
+	clear: both;
 }
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+ }
+ 
+.clearfix {display: inline-block;}
+* html .clearfix { height: 1%;}
+.clearfix {display: block;}
 
 .page-component {
 	
@@ -86,6 +101,7 @@ div.category ul li a {
 	#main {
 		margin: 0px auto 0px;
 		width: 970px;
+		padding-bottom: 50px;
 		/*min-height: 100%;*/
 	}
 	#category-content {
@@ -128,5 +144,6 @@ div.category ul li a {
 		/*min-height: 100%;*/
 		margin: 0px auto 0px;
 		width: 100%;
+		padding-bottom: 50px;
 	}
 }
