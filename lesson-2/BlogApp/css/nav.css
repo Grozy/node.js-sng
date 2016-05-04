@@ -1,0 +1,149 @@
+html, body{ margin:0; height:100%; }
+
+.warp {
+	/*height: 100%;*/
+	position: relative;
+	height: auto;
+	min-height: 100%;
+}
+
+/*body > #wrap {height: auto; min-height: 100%;}*/
+
+.logo-css {
+	color: #005f3c;
+	font-size: 30px;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+ul.nav.navbar-nav li a {
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+	color: #005f3c;
+}
+
+.category-content li.active a {
+	width: auto;	
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.background {
+	background: white;
+	margin-bottom: 0px
+}
+
+div.category {
+	width: 100%;
+	height: 35px;
+	background: #005f3c;
+	clear: both;
+}
+
+div.category ul {
+	padding: 0px 0px;
+}
+
+div.category ul li {
+	display: inline-block;
+	font-size: 15px;
+	line-height: 35px;
+	padding: 0px 20px
+}
+
+div.category ul li a {
+	color: white;
+}
+
+
+.border {
+	border: black 1px solid;
+	border-color: black;
+	border-width: 2px;
+}
+
+#sidebar {
+	margin: 20px 0px 20px;
+}
+
+#footer{
+	position: relative;
+	margin-top: -50px;
+	height: 50px;
+	width: 100%;
+	background-color: #005f3c;
+	color: white;
+	clear: both;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+ }
+ 
+.clearfix {display: inline-block;}
+* html .clearfix { height: 1%;}
+.clearfix {display: block;}
+
+.page-component {
+	
+}
+
+@media screen and (min-width: 970px) and (max-width: 2000px) {
+    #header {
+		width: 970px;
+		margin: 0px auto;
+	}
+	#main {
+		margin: 0px auto 0px;
+		width: 970px;
+		padding-bottom: 50px;
+		/*min-height: 100%;*/
+	}
+	#category-content {
+		width: 970px;
+		margin: 0px auto;
+		height: 35px;
+	}
+	
+	#content {
+		padding: 0px 30px 0px;
+		min-height:100%; /*使内容高度和body一样*/
+	}
+	
+    #secondary { width:30%; margin-left:3%;} 
+}
+
+@media screen and (min-width: 0px) and (max-width: 970px) {
+    #header {
+		width: 100%;
+		margin: 0px auto;
+	}
+	#category-content {
+		width: 100%;
+		margin: 0px auto;
+		height: 35px;
+		min-height:100%; /*使内容高度和body一样*/
+		margin-bottom:-80px;/*向上缩减80像素，不至于footer超出屏幕可视范围*/
+	}
+	
+	#content {
+		padding: 0px 30px 0px;
+	}
+	
+	.row {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	
+	#main {
+		/*min-height: 100%;*/
+		margin: 0px auto 0px;
+		width: 100%;
+		padding-bottom: 50px;
+	}
+}
