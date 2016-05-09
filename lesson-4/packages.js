@@ -9,16 +9,16 @@ var myObject = (function(){
   }
 })();
 
-console.log(myObject.getName());
-console.log(myObject.__name);
+// console.log(myObject.getName());
+// console.log(myObject.__name);
 
-var func1 = function(){
-  console.log('func1');
-};
-
-var func2 = (function(){
-  console.log('func2');
-})();
+// var func1 = function(){
+//   console.log('func1');
+// };
+//
+// var func2 = (function(){
+//   console.log('func2');
+// })();
 
 function Person(name) {
   this.name = name;
@@ -30,33 +30,18 @@ Person.prototype.getName = function () {
 
 var a = new Person('sevn');
 
-console.log(a.name);
-console.log(a.getName());
-console.log(Object.getPrototypeOf(a) === Person.prototype);
-
 var objectFactory = function(){
   var obj = new Object(),
-  Constructor = [].shift.call(arguments),
+
   args = [].slice.call(arguments);
-  console.log('....' + arguments + '...' + [].shift);
+  var undif = [].shift;
+
+  var Constructor = arguments[0];//undif.call(arguments);//shift
+
+  console.log(typeof(arguments) + '   ' + typeof([]));
   obj.__proto__ = Constructor.prototype;
   var ret = Constructor.apply(obj, arguments);
   return typeof ret === 'object'? ret: obj;
 }
 
 var b = objectFactory(Person, 'sven');
-
-console.log(b.name);
-console.log(b.getName());
-console.log(Object.getPrototypeOf(b) === Person.prototype);
-console.log(Object.getOwnPropertyNames(Person));
-
-var tester = function (a, b, c){
-   console.log({
-    this: this,
-    a: a,
-    b: b,
-    c: c
-  });
- };
- tester('a: Person','b');
