@@ -10,7 +10,10 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var topics = require('./routes/topic');
-var wechat = require('./routes/wechat')
+var wechat_router = require('./routes/wechat')
+var wechat = require('wechat');
+var http = require('http');
+var querystring = require('querystring');
 var app = express();
 
 var $settings = require('./conf/settings')
@@ -44,7 +47,31 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/topic', topics);
-app.use('/wechat', wechat);
+app.use('/wechat', wechat_router);
+
+app.use(function(req, res, next) {
+  var options = {
+    host: 'https://api.weixin.qq.com/',
+    port: 80,
+    path: 'cgi-bin/menu/create?access_token=sng_sc_1991',
+    method: 'POST'
+  };
+  var post_data = querystring.stringify({
+    button: [
+      {
+        name: "扫码"
+      }
+    ]
+  });
+
+  var req = http.request(options, function(res){
+    console.log('!!!!!request!!!!');
+  })
+  req.write(post_data);
+  req.end();
+  next(err);
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
