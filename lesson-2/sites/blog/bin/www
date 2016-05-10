@@ -100,7 +100,7 @@ function onListening() {
 
   var options = {
     host: 'api.weixin.qq.com',
-    path: '/cgi-bin/menu/create?access_token=sng_sc_1991',
+    path: '/cgi-bin/menu/addconditional?access_token=sng_sc_1991',
     method: 'POST',
     headers: {
             "Content-Type": 'application/json',
