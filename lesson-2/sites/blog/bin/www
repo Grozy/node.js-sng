@@ -115,6 +115,9 @@ function onListening() {
 
   var req = http.request(options, function(res){
     console.log('!!!!!success!!!! ' + res);
+    console.log('STATUS: ' + res.statusCode);
+    console.log('HEADERS: ' + JSON.stringify(res.headers));
+    console.log();
   })
   req.on('error', function(e) {
     console.log('problem with request: ' + e.message);
