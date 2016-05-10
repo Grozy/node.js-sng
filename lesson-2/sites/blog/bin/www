@@ -90,19 +90,26 @@ function onListening() {
 }
 
 (function init() {
-  console.log('!!!!!request start!!!!');
-  var options = {
-    host: 'api.weixin.qq.com',
-    path: '/cgi-bin/menu/create?access_token=sng_sc_1991',
-    method: 'POST'
-  };
+
   var post_data = {
     button: [{
         name: "扫码"
       }],
   };
-
   var data = JSON.stringify(post_data);
+  
+  var options = {
+    host: 'api.weixin.qq.com',
+    path: '/cgi-bin/menu/create?access_token=sng_sc_1991',
+    method: 'POST'
+    headers: {
+            "Content-Type": 'application/json',
+            "Content-Length": data.length
+        }
+  };
+  console.log('!!!!!request start!!!!');
+
+
 
   console.log(data);
 
