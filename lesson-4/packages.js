@@ -38,7 +38,7 @@ var objectFactory = function(){
 
   var Constructor = arguments[0];//undif.call(arguments);//shift
 
-  console.log(typeof(arguments) + '   ' + typeof([]));
+  console.log(args);
   obj.__proto__ = Constructor.prototype;
   var ret = Constructor.apply(obj, arguments);
   return typeof ret === 'object'? ret: obj;
