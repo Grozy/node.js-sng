@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var topics = require('./routes/topic');
+var wechat = require('./routes/wechat')
 var app = express();
 
 var $settings = require('./conf/settings')
@@ -42,8 +43,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/topic', topics)
-
+app.use('/topic', topics);
+app.use('/wechat' wechat);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
