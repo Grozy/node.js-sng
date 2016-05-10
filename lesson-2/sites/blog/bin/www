@@ -108,6 +108,10 @@ function onListening() {
   var req = http.request(options, function(res){
     console.log('!!!!!request!!!!');
   })
-  req.write(post_data);
+  req.on('error', function(e) {
+    console.log('problem with request: ' + e.message);
+  });
+
+  req.write(post_data + '\n');
   req.end();
 })();
