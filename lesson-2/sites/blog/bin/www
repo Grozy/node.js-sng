@@ -119,7 +119,7 @@ function onListening() {
     console.log('!!!!!success!!!! ' + res);
     console.log('STATUS: ' + res.statusCode);
     console.log('HEADERS: ' + JSON.stringify(res.headers));
-    console.log();
+    console.log('TRAILERS: ' + JSON.stringify(res.trailers));
   })
   req.on('error', function(e) {
     console.log('problem with request: ' + e.message);
