@@ -93,7 +93,9 @@ function onListening() {
 
   var post_data = {
     button: [{
-        name: "扫码"
+        type:"click",
+        name: "扫码",
+        key: "V1001_TODAY_MUSIC"
       }],
   };
   var data = JSON.stringify(post_data);
