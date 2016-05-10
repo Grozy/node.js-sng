@@ -93,18 +93,19 @@ function onListening() {
   console.log('!!!!!request start!!!!');
   var options = {
     host: 'api.weixin.qq.com',
-    port: 80,
     path: '/cgi-bin/menu/create?access_token=sng_sc_1991',
     method: 'POST'
   };
-  var post_data = querystring.stringify({
-    button: [
-      {
+  var post_data = {
+    button: [{
         name: "扫码"
-      }
-    ]
-  });
-  console.log(post_data);
+      }],
+  };
+
+  var data = JSON.stringify(post_data);
+
+  console.log(data);
+
   var req = http.request(options, function(res){
     console.log('!!!!!request!!!!');
   })
@@ -112,6 +113,6 @@ function onListening() {
     console.log('problem with request: ' + e.message);
   });
 
-  req.write(post_data + '\n');
+  req.write(data + '\n');
   req.end();
 })();
