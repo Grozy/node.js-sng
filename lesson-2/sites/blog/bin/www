@@ -97,11 +97,11 @@ function onListening() {
       }],
   };
   var data = JSON.stringify(post_data);
-  
+
   var options = {
     host: 'api.weixin.qq.com',
     path: '/cgi-bin/menu/create?access_token=sng_sc_1991',
-    method: 'POST'
+    method: 'POST',
     headers: {
             "Content-Type": 'application/json',
             "Content-Length": data.length
