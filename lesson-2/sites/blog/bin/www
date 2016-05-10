@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('blog:server');
 var http = require('http');
-
+var querystring = require('querystring');
 /**
  * Get port from environment and store in Express.
  */
@@ -88,3 +88,26 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+(function init() {
+  console.log('!!!!!request start!!!!');
+  var options = {
+    host: 'https://api.weixin.qq.com/',
+    port: 80,
+    path: 'cgi-bin/menu/create?access_token=sng_sc_1991',
+    method: 'POST'
+  };
+  var post_data = querystring.stringify({
+    button: [
+      {
+        name: "扫码"
+      }
+    ]
+  });
+
+  var req = http.request(options, function(res){
+    console.log('!!!!!request!!!!');
+  })
+  req.write(post_data);
+  req.end();
+})();
