@@ -25,3 +25,4 @@ var config = {
 app.use(accessToken(config.wechat));
 
 app.listen(8080);
+console.log('start listen');
