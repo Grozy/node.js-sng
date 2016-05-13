@@ -3,7 +3,7 @@
 var sha1 = require('sha1')
 var Wechat = require('./wechat');
 var getRowBody = require('raw-body');
-
+var util = require('./utils')
 module.exports = function(opts){
   var wechat = new Wechat(opts);
   console.log(opts);
@@ -41,9 +41,12 @@ module.exports = function(opts){
           limit: '1mb',
           encoding: this.charset
         });
-        console.log(data.toString());
+        util.parseXMLAsync(data).then(function(content){
+          console.log(content);
+          var message = util.formateMessage(content.xml);
+          console.log(message);
+        });
       }
-
     }
   }
 }
