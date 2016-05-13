@@ -56,10 +56,12 @@ function formateMessage(result) {
 
       if (item.length === 1) {
         var val = item[0];
+        console.log(val);
         if (typeof val === 'object') {
           message[key] = formateMessage(val);
         } else {
-          message[key] === val;
+          console.log('string ' + val);
+          message[key] = (val || '').trim();
         }
       } else {
         message[key] = [];
