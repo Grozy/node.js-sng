@@ -20,7 +20,7 @@ var config = {
       return util.writeFileAsync(wechat_file, data);
     }
   },
-  port: 8080
+  port: 80
 }
 
 app.use(accessToken(config.wechat));
