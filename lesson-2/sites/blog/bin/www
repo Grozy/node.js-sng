@@ -7,12 +7,12 @@
 var app = require('../app');
 var debug = require('debug')('blog:server');
 var http = require('http');
-
+var querystring = require('querystring');
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 
 /**
@@ -88,3 +88,43 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+(function init() {
+
+  var post_data = {
+    button: [{
+        type:"click",
+        name: "扫码",
+        key: "V1001_TODAY_MUSIC"
+      }],
+  };
+  var data = JSON.stringify(post_data);
+
+  var options = {
+    host: 'api.weixin.qq.com',
+    path: '/cgi-bin/menu/addconditional?access_token=sng_sc_1991',
+    method: 'POST',
+    headers: {
+            "Content-Type": 'application/json',
+            "Content-Length": data.length
+        }
+  };
+  console.log('!!!!!request start!!!!');
+
+
+
+  console.log(data);
+
+  var req = http.request(options, function(res){
+    console.log('!!!!!success!!!! ' + res);
+    console.log('STATUS: ' + res.statusCode);
+    console.log('HEADERS: ' + JSON.stringify(res.headers));
+    console.log('TRAILERS: ' + JSON.stringify(res.trailers));
+  })
+  req.on('error', function(e) {
+    console.log('problem with request: ' + e.message);
+  });
+
+  req.write(data + '\n');
+  req.end();
+})();

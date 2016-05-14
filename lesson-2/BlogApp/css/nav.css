@@ -111,7 +111,7 @@ div.category ul li a {
 	}
 	
 	#content {
-		padding: 0px 30px 0px;
+		padding: 30px 30px 0px;
 		min-height:100%; /*使内容高度和body一样*/
 	}
 	
@@ -132,7 +132,7 @@ div.category ul li a {
 	}
 	
 	#content {
-		padding: 0px 30px 0px;
+		padding: 30px 30px 0px;
 	}
 	
 	.row {
