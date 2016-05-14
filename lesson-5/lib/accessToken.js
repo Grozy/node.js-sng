@@ -7,8 +7,10 @@ var util = require('./utils');
 
 module.exports = function(opts){
   var wechat = new Wechat(opts);
+  console.log(' content : module.exports = function(opts)');
   // console.log(opts);
   return function *(next){
+    console.log(' content : function *(next){');
     // this.resolve(this.echostr);
     var signature = this.query.signature;
     var echostr = this.query.echostr;
