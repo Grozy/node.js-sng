@@ -3,6 +3,7 @@
 var fs = require('fs');
 var Promise = require('bluebird');
 var xml2js = require('xml2js');
+var news = require('../templates/news');
 
 exports.readFileAsync = function(fpath, encoding){
   return new Promise(function(resolve, reject) {
@@ -72,3 +73,25 @@ function formateMessage(result) {
 }
 
 exports.formateMessage = formateMessage;
+
+exports.tpl = function(content, message) {
+  var info = {};
+  var type = 'text';
+  var fromUser = message.FromUserName;
+  var ToUserName = message.ToUserName;
+
+  if (Array.isArray(content)) {
+    type = 'news'
+  }
+
+  console.log('utils.log message : ' + JSON.stringify(message));
+  // console.log(message.MsgType);
+
+  type = content.type || type;
+  info.content = content;
+  info.createtime = new Date().getTime();
+  info.ToUserName = fromUser;
+  info.FromUserName = ToUserName;
+  info.MsgType = type;
+  return news.compiled(info);
+}

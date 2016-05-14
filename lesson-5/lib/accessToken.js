@@ -4,8 +4,9 @@ var sha1 = require('sha1')
 var Wechat = require('./wechat');
 var getRowBody = require('raw-body');
 var util = require('./utils');
+var news = require('../templates/news');
 
-module.exports = function(opts){
+module.exports = function(opts, handler){
   var wechat = new Wechat(opts);
   // console.log(opts);
   return function *(next){
@@ -45,31 +46,12 @@ module.exports = function(opts){
 
         var that = this;
         var content = yield util.parseXMLAsync(data);
-        var message = util.formateMessage(content.xml)
-        console.log(JSON.stringify(message));
+        var message = util.formateMessage(content.xml);
 
-        if (message.MsgType === 'event') {
-          var event = message.Event;
-          if ('unsubscribe' === event) {
-            console.log('取消关注');
-            // that.body = body;
-          } else if ('subscribe' === event) {
-            console.log('关注成功');
-            var now = new Date().getTime();
-            var text = 'Hi,谢谢关注蜜罐屋';
-            that.status = 200;
-            that.type = 'application/xml';
-            that.body = '<xml>' +
-            '<ToUserName><![CDATA[' + message.FromUserName + ']]></ToUserName>' +
-             '<FromUserName><![CDATA[' + message.ToUserName +']]></FromUserName>' +
-             '<CreateTime>' + now + '</CreateTime>' +
-             '<MsgType><![CDATA[text]]></MsgType>' +
-             '<Content><![CDATA[' + text + ']]></Content>' +
-             '</xml>';
+        this.weixin = message;
+        yield handler.call(this, next);
 
-             return;
-          }
-        }
+        wechat.reply.call(this);
       }
     }
   }

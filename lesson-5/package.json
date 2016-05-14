@@ -9,7 +9,9 @@
     "raw-body": "latest",
     "xml2js": "latest",
     "sha1": "latest",
-    "wechat": "latest"
+    "wechat": "latest",
+    "ejs": "latest",
+    "heredoc": "latest"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
