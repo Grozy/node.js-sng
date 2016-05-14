@@ -9,8 +9,8 @@ var wechat_file = path.join(__dirname, './config/wechat_file.txt');
 var app = new koa();
 var config = {
   wechat: {
-    appID: 'wxb81c19bfba960280',//app id
-    appSecret: 'd4624c36b6795d1d99dcf0547af5443d', //app secret
+    appID: 'wxf9e806c16993ccc7',//app id
+    appSecret: '5998a2f2a0a85e1b44a16af835b91865', //app secret
     token: 'sng_sc_1991', // app token
     getAccessToken: function(data){
       return util.readFileAsync(wechat_file, 'utf-8');
