@@ -7,10 +7,8 @@ var util = require('./utils');
 
 module.exports = function(opts){
   var wechat = new Wechat(opts);
-  console.log(' content : module.exports = function(opts)');
   // console.log(opts);
   return function *(next){
-    console.log(' content : function *(next){');
     // this.resolve(this.echostr);
     var signature = this.query.signature;
     var echostr = this.query.echostr;
@@ -47,9 +45,8 @@ module.exports = function(opts){
 
         var that = this;
         var content = yield util.parseXMLAsync(data);
-        console.log(' content : ' + content.xml);
         var message = util.formateMessage(content.xml)
-        console.log(' message : ' + message);
+        console.log(JSON.stringify(message));
 
         if (message.MsgType === 'event') {
           var event = message.Event;
@@ -58,7 +55,6 @@ module.exports = function(opts){
             // that.body = body;
           } else if ('subscribe' === event) {
             console.log('关注成功');
-            console.log(message);
             var now = new Date().getTime();
             var text = 'Hi,谢谢关注蜜罐屋';
             that.status = 200;
