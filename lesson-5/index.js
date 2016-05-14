@@ -19,10 +19,11 @@ var config = {
       data = JSON.stringify(data);
       return util.writeFileAsync(wechat_file, data);
     }
-  }
+  },
+  port: 8080
 }
 
 app.use(accessToken(config.wechat));
 
-app.listen(8080);
-console.log('start listen');
+app.listen(config.port);
+console.log('start listen port: ' + config.port);
