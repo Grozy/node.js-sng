@@ -4,9 +4,11 @@ var Promise = require('bluebird');
 var request = Promise.promisify(require('request'));
 var utils = require('./utils');
 var prefix = 'https://api.weixin.qq.com/cgi-bin/';
+var fs = require('fs');
 
 var api = {
-  accessToken: prefix + 'token?grant_type=client_credential'
+  accessToken: prefix + 'token?grant_type=client_credential',
+  upload: prefix + 'media/upload?'
 }
 
 function Wechat(opts) {
@@ -15,6 +17,16 @@ function Wechat(opts) {
   this.appSecret = opts.appSecret;
   this.getAccessToken = opts.getAccessToken;
   this.saveAccessToken = opts.saveAccessToken;
+  this.fetchAccessToken();
+}
+
+Wechat.prototype.fetchAccessToken = function () {
+  var that = this;
+  if (this.access_token && this.expires_in) {
+    if (this.isValidAccessToken(this)) {
+      return Promise.resolve(this);
+    }
+  }
   this.getAccessToken()
     .then(function(data) {
       try {
@@ -37,14 +49,15 @@ function Wechat(opts) {
       that.expires_in = data.expires_in;
 
       that.saveAccessToken(data);
+      return Promise.resolve(data);
     })
-}
+};
 
 Wechat.prototype.goOn = function (data) {
   return new Promise(function(resolve, reject) {
     resolve(data);
   });
-};
+}
 
 Wechat.prototype.isValidAccessToken = function (data) {
   if (!data || !data.access_token || !data.expires_in) {
@@ -59,9 +72,10 @@ Wechat.prototype.isValidAccessToken = function (data) {
   } else {
     return false;
   }
-};
+}
 
 Wechat.prototype.updateAccessToken = function () {
+  console.log('__file__:' + wechat.js + '\n' + '__func__:updateAccessToken');
   var appID = this.appID;
   var appSecret = this.appSecret;
   var url = api.accessToken + '&appid=' + appID + '&secret=' + appSecret;
@@ -78,6 +92,36 @@ Wechat.prototype.updateAccessToken = function () {
     });
   });
 };
+
+Wechat.prototype.uploadMaterial = function(type, filepath) {
+  var form = {
+    media: fs.createReadStream(filepath)
+  }
+  var that = this;
+  var appID = this.appID;
+  var appSecret = this.appSecret;
+
+  return new Promise(function(resolve, reject) {
+    that.fetchAccessToken()
+    .then(function(data){
+      var url = api.upload + '&access_token=' + data.access_token + '&type=' + type;
+      console.log(' requst url : ' + url);
+      request({method: 'POST', url: url, formData: form, json: true})
+      .then(function(response){
+        var _data = response.body;
+        if (_data) {
+          resolve(_data);
+        } else {
+          throw new Error('Upload material fails');
+        }
+      })
+      .catch(function(err){
+        reject(err);
+      });
+    });
+  });
+}
+
 
 Wechat.prototype.reply = function(){
   var content = this.body;
