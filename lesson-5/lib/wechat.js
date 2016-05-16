@@ -75,19 +75,19 @@ Wechat.prototype.isValidAccessToken = function (data) {
 }
 
 Wechat.prototype.updateAccessToken = function () {
-  console.log('__file__:' + wechat.js + '\n' + '__func__:updateAccessToken');
+  // console.log('__file__:' + wechat.js + '\n' + '__func__:updateAccessToken');
   var appID = this.appID;
   var appSecret = this.appSecret;
   var url = api.accessToken + '&appid=' + appID + '&secret=' + appSecret;
   return new Promise(function(resolve, reject) {
     request({url: url, json: true}).then(function(response){
-      console.log(response.body);
+      // console.log(response.body);
       var data = response.body;
       var now = (new Date().getTime());
       var expires_in = now + (data.expires_in - 20) * 1000;
       data.expires_in = expires_in;
 
-      console.log('request : ' + data);
+      // console.log('request : ' + data);
       resolve(data);
     });
   });
@@ -105,7 +105,7 @@ Wechat.prototype.uploadMaterial = function(type, filepath) {
     that.fetchAccessToken()
     .then(function(data){
       var url = api.upload + '&access_token=' + data.access_token + '&type=' + type;
-      console.log(' requst url : ' + url);
+      // console.log(' requst url : ' + url);
       request({method: 'POST', url: url, formData: form, json: true})
       .then(function(response){
         var _data = response.body;
@@ -128,7 +128,7 @@ Wechat.prototype.reply = function(){
   var message = this.weixin;
   var body = utils.tpl(content, message);
   var MsgType = message.MsgType;
-  console.log('log content :' + content);
+  // console.log('log content :' + content);
   this.status = 200;
   this.type = 'application/xml';
 
