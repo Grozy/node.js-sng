@@ -52,10 +52,28 @@ module.exports.replay = function *(next) {
       replay = '天下第三吃仙丹';
     } else if (content === '5') {
       var data = yield wechatApi.uploadMaterial('image', __dirname + '/2.jpg');
-      console.log(data);
+      // console.log(data);
       replay = {
         type: 'image',
         media_id: data.media_id
+      }
+    } else if (content === '6') {
+      var data = yield wechatApi.uploadMaterial('video', __dirname + '/119.mp4')
+      console.log(data);
+      replay = {
+        title: '一群鸽子',
+        type: 'video',
+        description: '都不怕人的啊',
+        media_id: data.media_id
+      }
+    } else if (content === '7') {
+      var data = yield wechatApi.uploadMaterial('music', __dirname + '.mp3' )
+      replay = {
+        type: 'music',
+        title: '回复音乐内容',
+        description: '放松一下',
+        MusicUrl: '',
+        ThumbMediaId: data.media_id
       }
     } else {
       replay = "额，你说的:" + content + "，这句话太复杂了，我听不懂";
