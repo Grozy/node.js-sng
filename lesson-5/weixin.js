@@ -74,10 +74,24 @@ module.exports.replay = function *(next) {
         MUSIC_Url: 'http://music.baidutt.com/up/kwcywacy/suuwu.mp3',
         media_id: data.media_id
       }
-      console.log(replay);
+    }  else if (content === '8') {
+      var data = yield wechatApi.uploadMaterial('image', __dirname + '/2.jpg', {type: 'image'});
+      // console.log(data);
+      replay = {
+        type: 'image',
+        media_id: data.media_id
+      }
+    } else if (content === '9') {
+      var data = yield wechatApi.uploadMaterial('video', __dirname + '/119.mp4', {type: 'video', description: '{"title": "Nice", "introduction": "哈哈哈"}'});
+      console.log(data);
+      replay = {
+        type: 'video',
+        media_id: data.media_id
+      }
     } else {
       replay = "额，你说的:" + content + "，这句话太复杂了，我听不懂";
     }
+    console.log(replay);
     this.body = replay;
   }
   yield next;

@@ -11,7 +11,8 @@
     "sha1": "latest",
     "wechat": "latest",
     "ejs": "latest",
-    "heredoc": "latest"
+    "heredoc": "latest",
+    "lodash": "latest"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

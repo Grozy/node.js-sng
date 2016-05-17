@@ -4,11 +4,19 @@ var Promise = require('bluebird');
 var request = Promise.promisify(require('request'));
 var utils = require('./utils');
 var prefix = 'https://api.weixin.qq.com/cgi-bin/';
+var _ = require('lodash');
 var fs = require('fs');
 
 var api = {
   accessToken: prefix + 'token?grant_type=client_credential',
-  upload: prefix + 'media/upload?'
+  temporary: {
+    upload: prefix + 'media/upload?',
+  },
+  permanent: {
+    upload: prefix + 'material/add_material?',
+    uploadNews: prefix + 'material/add_news?',
+    uploadNewsPic: prefix + 'media/uploadimg?',
+  }
 }
 
 function Wechat(opts) {
@@ -93,19 +101,51 @@ Wechat.prototype.updateAccessToken = function () {
   });
 };
 
-Wechat.prototype.uploadMaterial = function(type, filepath) {
-  var form = {
-    media: fs.createReadStream(filepath)
-  }
+Wechat.prototype.uploadMaterial = function(type, material, permanent) {
   var that = this;
-  var appID = this.appID;
-  var appSecret = this.appSecret;
+  var form = {};
+  var uploadUrl = api.temporary.upload;
+
+  if (permanent) {
+    uploadUrl = api.permanent.upload;
+
+    _.extend(form, permanent);
+  }
+
+  if (type === 'pic') {
+    uploadUrl = api.permanent.uploadNewsPic;
+  }
+  if (type === 'news') {
+    uploadUrl = api.permanent.uploadNews;
+    form = material;
+  } else {
+    form.media = fs.createReadStream(material);
+  }
 
   return new Promise(function(resolve, reject) {
+
     that.fetchAccessToken()
     .then(function(data){
-      var url = api.upload + '&access_token=' + data.access_token + '&type=' + type;
-      // console.log(' requst url : ' + url);
+      var url = uploadUrl + '&access_token=' + data.access_token + '&type=' + type;
+      if (!permanent) {
+        url += '&type' + type;
+      } else {
+        form.access_token = data.access_token;
+      }
+
+      var options = {
+        method: 'POST',
+        url: url,
+        json: true
+      }
+
+      if (type === 'news') {
+        options.body = form;
+      } else {
+        options.formData = form;
+      }
+      console.log(' requst url : ' + url);
+
       request({method: 'POST', url: url, formData: form, json: true})
       .then(function(response){
         var _data = response.body;
