@@ -1,0 +1,66 @@
+<?xml version="1.0" standalone="yes"?>
+<DATAPACKET Version="2.0">
+<METADATA>
+<FIELDS>
+<FIELD FieldName="XH" DisplayLabel="XH" FieldType="Integer" FieldClass="TField"/>
+<FIELD FieldName="XH_DJ" DisplayLabel="XH_DJ" FieldType="Integer" FieldClass="TField"/>
+<FIELD FieldName="RQ" DisplayLabel="RQ" FieldType="Date" FieldClass="TField"/>
+<FIELD FieldName="RQ_TIME" DisplayLabel="RQ_TIME" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="DH" DisplayLabel="DH" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="UID" DisplayLabel="UID" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="BM" DisplayLabel="BM" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="LJM" DisplayLabel="LJM" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="CXGG" DisplayLabel="CXGG" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="CD" DisplayLabel="CD" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="DW" DisplayLabel="DW" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="FHFS" DisplayLabel="FHFS" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="KP" DisplayLabel="KP" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="KHM" DisplayLabel="KHM" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="JSFS" DisplayLabel="JSFS" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="CW" DisplayLabel="CW" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="SL" DisplayLabel="SL" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="Y_SL" DisplayLabel="Y_SL" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="SJ" DisplayLabel="SJ" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="JE" DisplayLabel="JE" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="SJJE" DisplayLabel="SJJE" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="ZSL" DisplayLabel="ZSL" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="SL_J" DisplayLabel="SL_J" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="JSL" DisplayLabel="JSL" FieldType="Integer" FieldClass="TField"/>
+<FIELD FieldName="JJ" DisplayLabel="JJ" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="CBJ" DisplayLabel="CBJ" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="PFJ" DisplayLabel="PFJ" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="BZ" DisplayLabel="BZ" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="YWY" DisplayLabel="YWY" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="CZY" DisplayLabel="CZY" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="LK" DisplayLabel="LK" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="ZX" DisplayLabel="ZX" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="KTS" DisplayLabel="KTS" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="KC_STR" DisplayLabel="KC_STR" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="PYDM" DisplayLabel="PYDM" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="ZDYDM" DisplayLabel="ZDYDM" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="QCYL" DisplayLabel="QCYL" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="A_J" DisplayLabel="A_J" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="B_J" DisplayLabel="B_J" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="C_J" DisplayLabel="C_J" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="D_J" DisplayLabel="D_J" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="E_J" DisplayLabel="E_J" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="F_J" DisplayLabel="F_J" FieldType="Float" FieldClass="TField"/>
+<FIELD FieldName="WSNO" DisplayLabel="WSNO" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="OK" DisplayLabel="OK" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="GG" DisplayLabel="GG" FieldType="String" FieldClass="TField"/>
+<FIELD FieldName="PP" DisplayLabel="PP" FieldType="String" FieldClass="TField"/>
+</FIELDS>
+</METADATA>
+<ROWDATA>
+<ROW XH="52" XH_DJ="1" RQ="2016-06-10" RQ_TIME="10:47:12" DH="RK1606100001" UID="BBF57A1E-0F30-4558-A35D-D2151CFBFD52" BM="00001" LJM="风暴太子挡风板" CXGG="" CD="" DW="" FHFS="" KP="是" KHM="神驰" JSFS="挂帐" CW="" SL="100.00" Y_SL="0.00" SJ="0.00" JE="0.00" SJJE="0.00" ZSL="0.00" SL_J="100.00" JSL="1" JJ="0.00" CBJ="0.00" PFJ="0.00" BZ="" YWY="" CZY="超级用户" LK="" ZX="" KTS="100.00" KC_STR="kc" PYDM="FBTZDFB" ZDYDM="" QCYL="0.00" A_J="0.00" B_J="0.00" C_J="0.00" D_J="0.00" E_J="0.00" F_J="0.00" WSNO="" OK="Y" GG="" PP=""/>
+<ROW XH="53" XH_DJ="2" RQ="2016-06-10" RQ_TIME="10:48:51" DH="RK1606100001" UID="DE3C73EF-150B-48C3-920F-3ACC81367347" BM="00001" LJM="风暴太子挡风板" CXGG="" CD="" DW="" FHFS="" KP="是" KHM="神驰" JSFS="挂帐" CW="" SL="20.00" Y_SL="0.00" SJ="0.00" JE="0.00" SJJE="0.00" ZSL="0.00" SL_J="20.00" JSL="1" JJ="0.00" CBJ="0.00" PFJ="0.00" BZ="" YWY="" CZY="超级用户" LK="" ZX="" KTS="20.00" KC_STR="kc" PYDM="FBTZDFB" ZDYDM="" QCYL="0.00" A_J="0.00" B_J="0.00" C_J="0.00" D_J="0.00" E_J="0.00" F_J="0.00" WSNO="" OK="Y" GG="" PP=""/>
+<ROW XH="54" XH_DJ="3" RQ="2016-06-10" RQ_TIME="10:50:49" DH="RK1606100001" UID="8BDE006E-8C9C-49F0-BB31-9B9F9FEF3081" BM="00001" LJM="风暴太子挡风板" CXGG="" CD="" DW="" FHFS="" KP="是" KHM="神驰" JSFS="挂帐" CW="" SL="0.00" Y_SL="0.00" SJ="0.00" JE="0.00" SJJE="0.00" ZSL="0.00" SL_J="0.00" JSL="1" JJ="0.00" CBJ="0.00" PFJ="0.00" BZ="" YWY="" CZY="超级用户" LK="" ZX="" KTS="0.00" KC_STR="kc" PYDM="FBTZDFB" ZDYDM="" QCYL="0.00" A_J="0.00" B_J="0.00" C_J="0.00" D_J="0.00" E_J="0.00" F_J="0.00" WSNO="" OK="Y" GG="" PP=""/>
+<ROW XH="55" XH_DJ="1" RQ="2016-06-10" RQ_TIME="10:58:12" DH="RK1606100002" UID="1BBBF685-31BD-48DA-A03E-E1017741E745" BM="00001" LJM="风暴太子挡风板" CXGG="" CD="" DW="" FHFS="" KP="否" KHM="沈阳神驰" JSFS="其它" CW="" SL="0.00" Y_SL="0.00" SJ="130.00" JE="0.00" SJJE="0.00" ZSL="0.00" SL_J="0.00" JSL="1" JJ="100.00" CBJ="90.00" PFJ="100.00" BZ="" YWY="" CZY="超级用户" LK="" ZX="" KTS="0.00" KC_STR="kc" PYDM="FBTZDFB" ZDYDM="" QCYL="0.00" A_J="0.00" B_J="0.00" C_J="0.00" D_J="0.00" E_J="0.00" F_J="0.00" WSNO="" OK="Y" GG="" PP=""/>
+<ROW XH="56" XH_DJ="2" RQ="2016-06-10" RQ_TIME="11:07:44" DH="RK1606100002" UID="8918B55F-A70C-4298-9D7D-0560776444AE" BM="3" LJM="烦烦烦" CXGG="" CD="" DW="" FHFS="" KP="否" KHM="沈阳神驰" JSFS="其它" CW="" SL="0.00" Y_SL="0.00" SJ="0.00" JE="0.00" SJJE="0.00" ZSL="0.00" SL_J="0.00" JSL="1" JJ="0.00" CBJ="0.00" PFJ="0.00" BZ="" YWY="" CZY="超级用户" LK="" ZX="" KTS="0.00" KC_STR="kc" PYDM="FFF" ZDYDM="" QCYL="0.00" A_J="0.00" B_J="0.00" C_J="0.00" D_J="0.00" E_J="0.00" F_J="0.00" WSNO="" OK="Y" GG="" PP=""/>
+<ROW XH="57" XH_DJ="3" RQ="2016-06-10" RQ_TIME="11:07:48" DH="RK1606100002" UID="64FE9B15-3284-4467-A1A8-2E48C6D5694B" BM="1" LJM="后前叉" CXGG="" CD="" DW="" FHFS="" KP="否" KHM="沈阳神驰" JSFS="其它" CW="" SL="0.00" Y_SL="0.00" SJ="0.00" JE="0.00" SJJE="0.00" ZSL="0.00" SL_J="0.00" JSL="1" JJ="0.00" CBJ="0.00" PFJ="0.00" BZ="" YWY="" CZY="超级用户" LK="" ZX="" KTS="0.00" KC_STR="kc" PYDM="HQC" ZDYDM="" QCYL="0.00" A_J="0.00" B_J="0.00" C_J="0.00" D_J="0.00" E_J="0.00" F_J="0.00" WSNO="" OK="Y" GG="" PP=""/>
+<ROW XH="58" XH_DJ="4" RQ="2016-06-10" RQ_TIME="11:08:01" DH="RK1606100002" UID="8B7A0553-2811-48FF-8115-9636F92010D3" BM="3" LJM="烦烦烦" CXGG="" CD="" DW="" FHFS="" KP="否" KHM="沈阳神驰" JSFS="其它" CW="" SL="0.00" Y_SL="0.00" SJ="0.00" JE="0.00" SJJE="0.00" ZSL="0.00" SL_J="0.00" JSL="1" JJ="0.00" CBJ="0.00" PFJ="0.00" BZ="" YWY="" CZY="超级用户" LK="" ZX="" KTS="0.00" KC_STR="kc" PYDM="FFF" ZDYDM="" QCYL="0.00" A_J="0.00" B_J="0.00" C_J="0.00" D_J="0.00" E_J="0.00" F_J="0.00" WSNO="" OK="Y" GG="" PP=""/>
+<ROW XH="59" XH_DJ="1" RQ="2016-06-11" RQ_TIME="18:41:16" DH="RK1606110001" UID="1BBBF685-31BD-48DA-A03E-E1017741E745" BM="00001" LJM="风暴太子挡风板" CXGG="" CD="" DW="" FHFS="" KP="是" KHM="风华" JSFS="现金" CW="" SL="50.00" Y_SL="0.00" SJ="130.00" JE="5,000.00" SJJE="0.00" ZSL="0.00" SL_J="50.00" JSL="1" JJ="100.00" CBJ="90.00" PFJ="100.00" BZ="" YWY="" CZY="超级用户" LK="" ZX="" KTS="50.00" KC_STR="kc" PYDM="FBTZDFB" ZDYDM="" QCYL="0.00" A_J="0.00" B_J="0.00" C_J="0.00" D_J="0.00" E_J="0.00" F_J="0.00" WSNO="" OK="Y" GG="" PP=""/>
+<ROW XH="60" XH_DJ="1" RQ="2016-06-12" RQ_TIME="9:04:09" DH="RK1606120001" UID="B9527BCA-B672-44EE-BAA0-2BA714108CB1" BM="TN000001" LJM="4V12电瓶" CXGG="" CD="" DW="组" FHFS="" KP="否" KHM="陈太鹏" JSFS="现金" CW="" SL="10.00" Y_SL="0.00" SJ="330.00" JE="2,600.00" SJJE="0.00" ZSL="0.00" SL_J="10.00" JSL="1" JJ="260.00" CBJ="260.00" PFJ="290.00" BZ="天能-陈太鹏" YWY="" CZY="孙国志" LK="" ZX="" KTS="10.00" KC_STR="kc" PYDM="DP" ZDYDM="" QCYL="0.00" A_J="0.00" B_J="0.00" C_J="0.00" D_J="0.00" E_J="0.00" F_J="0.00" WSNO="" OK="Y" GG="" PP=""/>
+<ROW XH="61" XH_DJ="2" RQ="2016-06-12" RQ_TIME="9:04:11" DH="RK1606120001" UID="7F3F2460-F7F3-49BE-94AA-29BA9DB886EA" BM="TN000002" LJM="48V20电瓶" CXGG="" CD="" DW="组" FHFS="" KP="否" KHM="陈太鹏" JSFS="现金" CW="" SL="5.00" Y_SL="0.00" SJ="530.00" JE="2,300.00" SJJE="0.00" ZSL="0.00" SL_J="5.00" JSL="1" JJ="460.00" CBJ="460.00" PFJ="490.00" BZ="天能-陈太鹏" YWY="" CZY="孙国志" LK="" ZX="" KTS="5.00" KC_STR="kc" PYDM="DP" ZDYDM="" QCYL="0.00" A_J="0.00" B_J="0.00" C_J="0.00" D_J="0.00" E_J="0.00" F_J="0.00" WSNO="" OK="Y" GG="" PP=""/>
+</ROWDATA>
+</DATAPACKET>
