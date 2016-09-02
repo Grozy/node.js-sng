@@ -2,12 +2,22 @@
 
 var config = require('./config/config');
 var Wechat = require('./lib/wechat');
+var menu = require('./lib/menu')
 
 var wechatApi = new Wechat(config.wechat);
+
+wechatApi.deleteMenu()
+.then(function() {
+  return wechatApi.createMenu(menu)
+})
+.then(function(msg) {
+  console.log(msg);
+})
 
 module.exports.replay = function *(next) {
   var message = this.weixin;
   var MsgType = message.MsgType;
+
   console.log('log message :' + JSON.stringify(message));
   if (MsgType === 'event') {
     var event = message.Event,
@@ -29,6 +39,8 @@ module.exports.replay = function *(next) {
     } else if (event === 'VIEW') {
       this.body = '您点击了菜单中的链接: ' + eventKey;
     }
+  } else if (MsgType === 'image') {
+    this.body = '您点击了菜单中的链接: ' + 12;
   } else if (MsgType === 'text') {
     var content = message.Content;
     var replay;
@@ -71,7 +83,7 @@ module.exports.replay = function *(next) {
         type: 'music',
         title: '大城小爱',
         description: '放松一下',
-        MUSIC_Url: 'http://music.baidutt.com/up/kwcywacy/suuwu.mp3',
+        MUSIC_Url: ' http://sc.111ttt.com/up/mp3/247978/A810FD430B41D801D983E958A5EABAD3.mp3',
         media_id: data.media_id
       }
     }  else if (content === '8') {
