@@ -278,13 +278,16 @@ Wechat.prototype.reply = function(){
   var message = this.weixin;
   var body = utils.tpl(content, message);
   var MsgType = message.MsgType;
+  var eventKey = message.EventKey;
   // console.log('log content :' + content);
   this.status = 200;
   this.type = 'application/xml';
 
-
+  console.log('message info :' + JSON.stringify(message));
+  console.log('message is:' + MsgType);
   if (MsgType === 'event') {
     var event = message.Event;
+    console.log('eventType is:' + event);
     if ('unsubscribe' === event) {
       // that.body = body;
     } else if ('subscribe' === event) {
@@ -294,6 +297,12 @@ Wechat.prototype.reply = function(){
       that.type = 'application/xml';
       that.body = body;
        return;
+    } else if ('CLICK' === event) {
+      // if ('contact_us' === eventKey || 'help_address' === eventKey || 'about_us' === eventKey) {
+        console.log('回复信息:' + body);
+        that.body = body;
+        return;
+      // }
     }
   } else if (MsgType === 'image') {
     this.body = body;
