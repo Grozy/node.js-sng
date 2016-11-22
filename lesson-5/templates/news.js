@@ -33,6 +33,8 @@ var tpl = heredoc(function(){/*
     <HQMusicUrl><![CDATA[<%= content.HQ_MUSIC_Url %>]]></HQMusicUrl>
     <ThumbMediaId><![CDATA[<%= content.media_id %>]]></ThumbMediaId>
     </Music>
+  <% } else if ("unsubscribe" === MsgType) { %>
+      <Content><![CDATA[<%= content %>]]></Content>
   <% } else if ("news" === MsgType) { %>
     <ArticleCount><%= content.length %></ArticleCount>
     <Articles>

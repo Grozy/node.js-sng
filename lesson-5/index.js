@@ -12,8 +12,7 @@ var weixin = require('./weixin');
 var app = new koa();
 
 app.use(counter(counter_file));
-console.log(weixin.replay);
-
+console.log("===启动===\n");
 app.use(accessToken(config.wechat, weixin.replay));
 
 app.listen(config.port);

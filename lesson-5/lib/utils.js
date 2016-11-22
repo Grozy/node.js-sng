@@ -83,11 +83,11 @@ exports.tpl = function(content, message) {
   if (Array.isArray(content)) {
     type = 'news'
   }
-
+  if (content) { //取消关注的时，Content为undefined
+    type = content.type || type;
+  }
   console.log('utils.log message : ' + JSON.stringify(message));
-  // console.log(message.MsgType);
 
-  type = content.type || type;
   info.content = content;
   info.createtime = new Date().getTime();
   info.ToUserName = fromUser;
