@@ -246,3 +246,21 @@ Commodity.prototype.updateInfo = function(callback) {
 
   })
 }
+
+Commodity.queryWithLJM = function(ljm, callback) {
+  pool.getConnection(function(err, connection) {
+    if (err) {
+      return callback(err);
+    }
+    // 获取仓位的时候先从commodityinfo表中查询仓位信息，如果info表中没有，直接使用电脑的数据库结果
+    connection.query("SELECT * FROM KC WHERE PYDM like '%" + ljm + "%'", function(err, result) {
+      if (err) {
+        return callback(err);
+      } else {
+        console.log("search result:" + result);
+        callback(null, result);
+      }
+      connection.release();
+    });
+  });
+}

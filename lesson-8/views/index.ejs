@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title><%= title %></title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style media="screen">
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      .bar {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #27ae60;
+        box-shadow: 0px 0px 5px #888899;
+        position:absolute;
+        top: 0px;
+        z-index: 1;
+        bottom:rem-calc(80px);
+      }
+      #list {
+        top: 54px;
+        position: relative;
+      }
+      a h5 {
+        color: #27ae60;
+      }
+      hr {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+    </style>
+    <script type="text/javascript">
+      function searchPrice() {
+        var ljm = document.getElementById("search_txt").value;
+
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+          xmlhttp = new XMLHttpRequest();
+        } else {
+          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+      	{
+      		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      		{
+      			document.getElementById("list").innerHTML=JSON.parse(xmlhttp.responseText);
+            var commoditys = JSON.parse(xmlhttp.responseText);
+            var str = "<ul data-role=\"listview\" data-split-icon=\"gear\" data-split-theme=\"d\">";
+            for (var i = 0; i < commoditys.length; i++) {
+              var commodity = commoditys[i];
+              str += "<li><a href=\"index.html\">";
+              str += "<h5>"+ commodity.LJM + "</h5>";
+              str += "<p>批发价:" + commodity.PFJ + "¥ | 建议零售价:" + commodity.SJ + "¥</p>";
+              str += "</a></li>";
+              str += "<hr color=#987cb9 SIZE=3>";
+            }
+            str += "</ul>"
+            document.getElementById("list").innerHTML = str;
+      		}
+      	}
+        xmlhttp.open("GET", "/commodity?ljm=" + ljm, true);
+        xmlhttp.send();
+      }
+
+    </script>
+
+  </head>
+  <body>
+    <div class="bar">
+      <div class="col-lg-6">
+          <div class="input-group">
+              <input id="search_txt" type="text" class="form-control">
+              <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" onclick="searchPrice()">搜索</button>
+              </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+    <!-- <% if(commoditys){ %> -->
+      <div id="list">
+
+      </div>
+    <!-- <% } %> -->
+  </body>
+</html>

@@ -2,5 +2,5 @@ node_modules
 *~
 .DS_Store
 npm-debug.log
-lesson-2/sites/blog/public/tmp
 .project
+config.js

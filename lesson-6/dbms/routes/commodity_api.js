@@ -11,10 +11,12 @@ router.get('/list', function (req, res, next) {
     var data = [] //response data
     commoditys.forEach(function(commodity) {
       var result = {}
-      result.no = commodity.XH
-      result.name = commodity.LJM
-      result.retail_price = commodity.SJ
-      result.trade_price = commodity.PFJ
+      result.no = commodity.XH;
+      result.name = commodity.LJM;
+      result.retail_price = commodity.SJ;
+      result.trade_price = commodity.PFJ;
+      result.pinyin = commodity.PYDM;
+      result.ps = commodity.BZ;
       data.push(result)
     });
     res.jsonp({
@@ -22,27 +24,29 @@ router.get('/list', function (req, res, next) {
       data:data
     });
   });
-})
+});
 
-router.get('/item', function (req, res, next) {
+router.get('/item', function(req, res, next) {
   //req,query exam: {no: 10}
   var commodity_id = req.query.no;
   Commodity.getOne(commodity_id, function (err, commodity) {
     var data = {}
     if (commodity) {
-      data.no = commodity.XH
-      data.name = commodity.LJM
-      data.retail_price = commodity.SJ
-      data.trade_price = commodity.PFJ
-      data.location = commodity.CW
-      data.unit = commodity.DW
+      data.no = commodity.XH;
+      data.name = commodity.LJM;
+      data.retail_price = commodity.SJ;
+      data.trade_price = commodity.PFJ;
+      data.location = commodity.CW;
+      data.unit = commodity.DW;
+      data.pinyin = commodity.PYDM;
+      data.ps = commodity.BZ;
     }
     res.jsonp({
       status:'200',
       data:data
     });
   });
-})
+});
 
 router.post('/update', function (req, res, next) {
   /*
@@ -51,7 +55,6 @@ router.post('/update', function (req, res, next) {
         pics :货物的样品图片
     location :货物的位置
   */
-  console.log('body: ' + req.body.location);
   var commodity_id = req.body.no
   var commodityInfo = Commodity.getInfo(commodity_id, function(err, commodityInfo) {
     var location = req.body.location;
@@ -69,6 +72,29 @@ router.post('/update', function (req, res, next) {
       res.jsonp(data)
     });
   });
-})
+});
+
+router.post('/error-position-report', function(req, res, next) {
+  /*
+  上报人 uid
+  货品id
+  */
+  console.log('post : error-position-report');
+  var commodity_id = req.body.no;
+  var uid = req.body.uid;
+  var location = req.body.location;
+  var commodity = new Commodity(commodity_id, location);
+  commodity.position_report(uid, function(err, result) {
+    var data = {}
+    if (err) {
+      data.status = 403
+      data.message = err
+    } else {
+      data.status = 200
+      data.message = "更新成功"
+    }
+    res.jsonp(data)
+  });
+});
 
 module.exports = router;

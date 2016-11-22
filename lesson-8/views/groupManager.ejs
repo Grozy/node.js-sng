@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>分组管理</title>
+  </head>
+  <body>
+    <h1>分组管理</h1>
+    <h2>
+      创建分组
+    </h2>
+    <form action="/group/create" method="post">
+      分组名称:<input type="text" name="group_title">
+      <input type="submit"value="确认">
+    </form>
+    <h2>当前已有分组</h2>
+    <ul>
+      <% groups.forEach(function(group){ %>
+        <li><p>
+          组名:<%= group.name %></li>
+        </p>
+        <p>
+          人数:<%= group.count %>
+        </p>
+      <% }) %>
+    </ul>
+  </body>
+</html>

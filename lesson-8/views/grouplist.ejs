@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>关注人列表</title>
+  </head>
+  <body>
+    <ol>
+      <% openids.forEach(function(openid){ %>
+        <li><a href="member?openid=<%= openid %>"><%= openid %></a></li>
+      <% }) %>
+    </ol>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <a href="/main">主页</a>
+    <br>
+    <br>
+    <table border="1">
+      <tr>
+        <th>姓名</th>
+        <th>账号</th>
+      </tr>
+      <% users.forEach(function(user, index){ %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.account %></td>
+      </tr>
+      <% }) %>
+  </table>
+  <br>
+  <form method="post">
+    姓名:<input type="text" name="name" value=""><br>
+    用户名:<input type="text" name="account" value=""><br>
+    密码:<input type="text" name="password" value=""><br>
+    <input type="submit" value="添加">
+  </form>
+  </body>
+</html>

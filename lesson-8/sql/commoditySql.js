@@ -2,7 +2,8 @@ var commodity = {
   query: {
     commoditys: 'SELECT * FROM KC',
     commodityById: 'SELECT * FROM KC WHERE XH=?',
-    commodityByName: 'SELECT * FROM KC WHERE name=?',
+    // select * from KC where PYDM like "%DC%"
+    commodityByName: "SELECT * FROM KC WHERE PYDM like \"%?%\";",
     commodityInfoById: 'SELECT * FROM commodity_info WHERE XH=?',
     commodityReportInfo: 'SELECT * FROM (position_report left join users on position_report.uid=users.uid) left join kc on position_report.good_id=kc.XH WHERE status=0 order by time_stamp desc'
   },
